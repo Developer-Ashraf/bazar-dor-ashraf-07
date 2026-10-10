@@ -7,13 +7,13 @@ import { TrendingUp, TrendingDown, LayoutGrid } from "lucide-react";
 export default async function HomePage() {
   const products = await getAllProducts();
 
-  // 1. Top 6 Risers (দাম বেড়েছে ▲)
+  // 1. Top 6 Risers price increase
   const risers = [...products]
     .filter((p) => p.change && (p.change.dir === "up" || p.change.pct > 0))
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-  // 2. Top 6 Fallers (দাম কমেছে ▼)
+  // 2. Top 6 Fallers price reduce
   const fallers = [...products]
     .filter((p) => p.change && (p.change.dir === "down" || p.change.pct < 0))
     .sort((a, b) => a.change.pct - b.change.pct)
@@ -25,7 +25,7 @@ export default async function HomePage() {
       <Hero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-        {/* Section A: আজ দাম বেড়েছে ▲ */}
+        {/* Section A: price increase  */}
         {risers.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-6">
@@ -42,7 +42,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* Section B: আজ দাম কমেছে ▼ */}
+        {/* Section B: price reduce  */}
         {fallers.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-6">
@@ -59,7 +59,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* Section C: সব পণ্য */}
+        {/* Section C: all products */}
         <section id="সব-পণ্য" className="scroll-mt-36">
           <div className="mb-6">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900">

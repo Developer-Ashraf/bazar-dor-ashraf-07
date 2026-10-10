@@ -1,4 +1,4 @@
-// বাংলা ডিজিট কনভার্সন
+// bangla digit formating
 export function toBanglaNumber(input: number | string | undefined | null): string {
   if (input === undefined || input === null) return "";
   const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
@@ -6,14 +6,14 @@ export function toBanglaNumber(input: number | string | undefined | null): strin
   return str.replace(/\d/g, (d) => banglaDigits[parseInt(d, 10)]);
 }
 
-// টাকার ফরম্যাটিং (যেমন: ১২৫ টাকা / ১,৮৫০ টাকা)
+// taka formating
 export function formatBanglaPrice(num: number | undefined | null): string {
   if (num === undefined || num === null) return "০ টাকা";
   const formatted = num.toLocaleString("en-US");
   return `${toBanglaNumber(formatted)} টাকা`;
 }
 
-// পরিবর্তন ফরম্যাটিং (▲ ২.১% / ▼ ১.৫% / — ০.০%)
+// rice change formating
 export function formatChange(pct: number | undefined | null, dir?: string) {
   if (pct === undefined || pct === null) return { text: "— ০.০%", color: "text-gray-500", bg: "bg-gray-100" };
   const absVal = Math.abs(pct).toFixed(1);
@@ -42,7 +42,7 @@ export function formatChange(pct: number | undefined | null, dir?: string) {
   };
 }
 
-// বাংলা তারিখ ফরম্যাট (যেমন: মঙ্গলবার, ৬ অক্টোবর, ২০২৬)
+// Bangla date formate
 export function getBanglaDate(): string {
   const date = new Date();
   const days = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
