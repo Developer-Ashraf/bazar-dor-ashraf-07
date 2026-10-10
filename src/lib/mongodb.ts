@@ -1,10 +1,8 @@
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
-}
-
-const uri = process.env.MONGODB_URI;
+const uri =
+  process.env.MONGODB_URI ||
+  "mongodb://bazar-dor-ashraf-07:96COOdltO3FZvk7N@ac-m0gvdxt-shard-00-00.i3lu0gl.mongodb.net:27017,ac-m0gvdxt-shard-00-01.i3lu0gl.mongodb.net:27017,ac-m0gvdxt-shard-00-02.i3lu0gl.mongodb.net:27017/bazar_dor?ssl=true&authSource=admin&replicaSet=atlas-ccvxfd-shard-0&retryWrites=true&w=majority";
 const options = {};
 
 let client: MongoClient;
